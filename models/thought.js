@@ -19,7 +19,7 @@ const thoughtSchema = new Schema (
             type: String,
             required: true,
         },
-        thoughts: [{ type: Schema.Types.ObjectId, ref: 'reaction'}],
+        reactions: [reactionSchema],
     },
     {
         toJSON: {
@@ -29,10 +29,38 @@ const thoughtSchema = new Schema (
     }
 );
 
+const reactionSchema = new Schema (
+    {
+        reactionID: {
+            type: Schema.Types.ObjectId,
+            default: () => new Types.ObjectId(),
+        },
+        reactionBody: {
+            type: String,
+            required: true,
+            minlength: 1,
+            maxlength: 280,
+        },
+        username: {
+            type: String,
+            required: true,
+        },
+        createdAt: {
+            type: Date,
+            default: Date.now,
+        }
+    }
+);
+
 thoughtSchema.virtual('formattedCreatedAt').get(function () {
     const date = this.createdAt;
     return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
-  });
+});
+
+reactionSchema.virtual('formattedCreatedAt').get(function () {
+    const date = this.createdAt;
+    return `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
+});
 
 thoughtSchema.virtual('reactionCount').get(function () {
     return this.reactions.length;
