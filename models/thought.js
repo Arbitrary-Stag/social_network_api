@@ -2,33 +2,6 @@
 const { Schema, model } = require('mongoose');
 
 // Create a new instance of the Mongoose schema to define shape of each document
-const thoughtSchema = new Schema (
-    {
-        thoughtText: { 
-            type: String, 
-            required: true, 
-            minlength: 1,
-            maxlength: 280,
-        },
-        createdAt: { 
-            type: Date,
-            default: Date.now,
-            
-        },
-        username: {
-            type: String,
-            required: true,
-        },
-        reactions: [reactionSchema],
-    },
-    {
-        toJSON: {
-            virtuals: true,
-        },
-        id: false,
-    }
-);
-
 const reactionSchema = new Schema (
     {
         reactionID: {
@@ -49,6 +22,34 @@ const reactionSchema = new Schema (
             type: Date,
             default: Date.now,
         }
+    }
+);
+
+const thoughtSchema = new Schema (
+    {
+        thoughtText: { 
+            type: String, 
+            required: true, 
+            minlength: 1,
+            maxlength: 280,
+        },
+        createdAt: { 
+            type: Date,
+            default: Date.now,
+            
+        },
+        username: {
+            type: String, 
+            ref: 'user',
+            required: true,
+        },
+        reactions: [reactionSchema],
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
     }
 );
 
