@@ -4,7 +4,7 @@ const { Schema, model } = require('mongoose');
 // Create a new instance of the Mongoose schema to define shape of each document
 const reactionSchema = new Schema (
     {
-        reactionID: {
+        reactionId: {
             type: Schema.Types.ObjectId,
             default: () => new Types.ObjectId(),
         },
@@ -22,6 +22,12 @@ const reactionSchema = new Schema (
             type: Date,
             default: Date.now,
         }
+    },
+    {
+        toJSON: {
+            virtuals: true,
+        },
+        id: false,
     }
 );
 
