@@ -29,4 +29,5 @@ Click the link below to view a soundless tutorial demonstrating the Social Netwo
 
 
 ## Screenshot
+![Social Network API](https://github.com/Arbitrary-Stag/social_network_api/assets/120620818/0d432c2a-5261-4c4f-a9b4-fbda9b835fd6)
 
