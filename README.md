@@ -26,6 +26,7 @@ This code was written by William Weaver with the assistance of class materials.
 
 ## Video Tutorial
 Click the link below to view a soundless tutorial demonstrating the Social Network API's functionality. 
+
 https://drive.google.com/file/d/1morrg-sCZj4O4nOgmJ1eVyerwCnXD5NL/view
 
 ## Screenshot
